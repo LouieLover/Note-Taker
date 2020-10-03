@@ -6,7 +6,6 @@ let fs = require("fs");
 const bodyParser = require('body-parser');
 const { get } = require("http");
 const { writeFileSync } = require("fs");
-const { stringify } = require("querystring");
 
 
 // Sets up the Express App
@@ -87,54 +86,25 @@ app.post("/api/notes", function(req, res) {
                 message: "added new note"
             });
         });
+        // fs.writeFileSync("./db/db.json", JSON.stringify(db), (err) => {
+        //     if (err) throw err;
+        //     console.log(db);
+
+        // });
     });
-});
 
-// app.delete("/api/notes/", function(req, res) {
-//     try {
-//         delete deleteNote.remove;
-//         console.log(deleteNote);
-//         deleteNote.splice(req.body);
-//     } catch (err) {
-//         throw err;
-//     }
-//     res.json({
-//         message: "deleted note"
-//     });
-
-//     // const dbDelete = [{ "title": "Test Title", "text": "Test text" }]
-//     // console.log(dbDelete.filter(function(data) {
-//     //     return data.type == "Delete";
-// });
-
-
-
-app.post("/api/notes", function(req, res) {
-
+    res.sendFile(path.join(__dirname, "public/notes.html"));
 });
 
 app.get("*", function(req, res) {
 
     res.sendFile(path.join(__dirname, "public/index.html"));
 });
+//index section 
+
+
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
 });
-
-
-// $([
-//     {"title":"","text":""},
-//     {"title":","text":""}
-//     ])
-//       .filter(function (i,n){
-//           return n.website==='google';
-//       });
-
-
-// const dbDelete = [{ "title": "Test Title", "text": "Test text" }]
-// console.log(dbDelete.filter(function(data) {
-//     return data.type == "Delete";
-
-// var deleteNote = [{ "title": "Test Title", "text": "Test text" }];
